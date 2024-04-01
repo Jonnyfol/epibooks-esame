@@ -1,9 +1,19 @@
-import './CommentList.css'
-import React, { useContext } from 'react';
+import "./CommentList.css";
+import React, { useContext } from "react";
 import { ThemeContext } from "../../context/ThemeContextProvider";
 
-export default function CommentList () {
-    const { theme } = useContext(ThemeContext);
-
-    return <h1 className={theme === "dark" ? "text-light" : "text-dark"}>Comment</h1>
+export default function CommentList({ comments }) {
+  const { theme } = useContext(ThemeContext);
+  return (
+    <div>
+      <h3 className={theme === "dark" ? "text-light" : "text-dark"}>
+        Comments
+      </h3>
+      <ul>
+        {comments.map((comment, index) => (
+          <li key={index}>{comment.text}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }

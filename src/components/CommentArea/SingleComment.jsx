@@ -6,7 +6,7 @@ export default function SingleComment({ userComment, onDelete }) {
   const { theme } = useContext(ThemeContext);
   const listTheme = theme === "dark" ? "font-color-light" : "font-color-dark";
 
-  const { comment, rate } = userComment;
+  const { comment, rate, _id } = userComment;
 
   return (
     <div className="single-comment d-flex align-items-center gap-3 py-2">
@@ -21,7 +21,7 @@ export default function SingleComment({ userComment, onDelete }) {
         </div>
       </div>
       {/* Aggiungiamo il pulsante "Cancella" */}
-      <Button variant="danger" size="sm" onClick={onDelete}>
+      <Button variant="danger" size="sm" onClick={() => onDelete(_id)}>
         Cancella
       </Button>
     </div>

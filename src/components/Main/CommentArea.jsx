@@ -16,8 +16,7 @@ export default function CommentArea({ selectedBook }) {
       try {
         const response = await fetch(APIget);
         const data = await response.json();
-        // setComments(data);
-        console.log(data);
+        setComments(data); // Imposta lo stato dei commenti con i dati ottenuti dalla richiesta
       } catch (error) {
         console.log("Errore durante la richiesta dei commenti:", error);
       }
@@ -31,7 +30,7 @@ export default function CommentArea({ selectedBook }) {
 
   return (
     <>
-      <CommentList />
+      <CommentList comments={comments} /> {/* Passa i commenti a CommentList */}
       <AddComment />
     </>
   );

@@ -3,7 +3,6 @@ import CommentList from "./CommentList.jsx";
 import AddComment from "./AddComment.jsx";
 import { Container, Row, Col, Alert } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import MySpinner from "./MySpinner.jsx";
 
 export default function CommentArea({ asin }) {
   const [comments, setComments] = useState([]);
@@ -28,29 +27,33 @@ export default function CommentArea({ asin }) {
 
   const ENDPOINT_get = `https://striveschool-api.herokuapp.com/api/comments/${asin}`;
 
-  useEffect(() => {
-    const getComments = async () => {
-      try {
-        const response = await fetch(ENDPOINT_get, {
-          headers: {
-            Authorization: key,
-          },
-        });
-        if (response.ok) {
-          const comments = await response.json();
-          setComments(comments);
-          setLoading(false);
-        } else {
-          console.log("error");
+  useEffect(
+    () => {
+      const getComments = async () => {
+        try {
+          const response = await fetch(ENDPOINT_get, {
+            headers: {
+              Authorization: key,
+            },
+          });
+          if (response.ok) {
+            const comments = await response.json();
+            setComments(comments);
+            setLoading(false);
+          } else {
+            console.log("error");
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
+      };
+      if (asin) {
+        getComments();
       }
-    };
-    if (asin) {
-      getComments();
-    }
-  }, [asin]);
+    },
+    [asin],
+    [comments]
+  );
 
   const ENDPOINT_post = "https://striveschool-api.herokuapp.com/api/comments";
 
@@ -66,7 +69,9 @@ export default function CommentArea({ asin }) {
       });
       if (response.ok) {
         setShowSuccessAlert(true);
+        // Aggiungi il nuovo commento all'array dei commenti nello stato locale
         setComments((prevComments) => [...prevComments, newComment]);
+        window.location.reload();
       } else {
         setShowErrorAlert(true);
         throw new Error("Qualcosa è andato storto");
@@ -75,11 +80,10 @@ export default function CommentArea({ asin }) {
       console.log(error);
     }
   };
-
-  const deleteComment = async (commentId) => {
+  const deleteComment = async (_id) => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/comments/${commentId}`,
+        `https://striveschool-api.herokuapp.com/api/comments/${_id}`,
         {
           method: "DELETE",
           headers: {
@@ -89,7 +93,8 @@ export default function CommentArea({ asin }) {
       );
       if (response.ok) {
         setDeleteSuccess(true);
-        setComments(comments.filter((comment) => comment._id !== commentId));
+        // Rimuovi il commento eliminato dall'array dei commenti nello stato locale
+        setComments(comments.filter((comment) => comment._id !== _id));
       } else {
         setShowErrorAlert(true);
         throw new Error("Qualcosa è andato storto");
@@ -107,9 +112,7 @@ export default function CommentArea({ asin }) {
             <Col
               sm={12}
               className="d-flex justify-content-center align-items-center"
-            >
-              <MySpinner />
-            </Col>
+            ></Col>
           ) : (
             <>
               <Col sm={12} md={6} lg={6} className="add-comment-box">
