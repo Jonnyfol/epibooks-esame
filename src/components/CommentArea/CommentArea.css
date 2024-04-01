@@ -1,0 +1,70 @@
+/*commentArea*/
+.comment-list-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    height: 350px;
+    overflow: visible;
+    overflow-y: scroll;
+}
+
+/*SingleComment*/
+.single-comment img {
+    width: 2em;
+    height: 2em;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.comment-span-style span:first-of-type {
+    font-size: 12pt;
+    font-style: oblique;
+}
+
+.comment-span-style span:last-of-type {
+    font-size: 10pt;
+}
+
+.no-comment-yet {
+    font-size: 12pt;
+}
+
+/*addComment*/
+.form-label {
+    font-size: 10pt;
+}
+
+.add-comment-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.font-color-light {
+    color: white;
+}
+
+.font-color-dark {
+    color: #212121;
+}
+
+
+/*SCROLLBAR*/
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: #F8F9FA;
+}
+  
+::-webkit-scrollbar-thumb {
+    background: #15f5b9a8;
+}
+  
+
+::-webkit-scrollbar-thumb:hover {
+    background: #15f5b9;
+}

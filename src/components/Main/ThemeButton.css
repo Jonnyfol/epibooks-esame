@@ -1,0 +1,12 @@
+.theme-light-style {
+    border: none;  
+    padding: 0.5em;
+    background-color: black;
+    color: white;
+}
+
+.theme-dark-style {
+    border: none;  
+    padding: 0.5em;
+    background-color: white;
+}

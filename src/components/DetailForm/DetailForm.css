@@ -1,0 +1,24 @@
+.image-details {
+    width: 70%;
+    object-fit: contain;
+}
+
+.show-more-light {
+    padding: 0.7em;
+    border: none;
+    border-radius: 0.8em;
+    background-color: #fc0d05;
+    color: white;
+}
+
+.show-more-dark {
+    padding: 0.7em;
+    border: none;
+    border-radius: 0.8em;
+    background-color: #212121;
+    color: white;
+}
+
+div.show-more-box {
+    margin-top: 7%;
+}

@@ -1,0 +1,68 @@
+
+.custom-card {
+    width: 90%;
+}
+
+.custom-card .card-img-top {
+height: 400px;
+
+}
+  
+.custom-card .card-body {
+    height: 180px;
+    text-align: center;
+}
+  
+.card-icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.subtitle-style {
+    font-size: 9pt;
+    color: #2009f7;
+}
+
+.size-title {
+    font-size: 13pt;
+}
+
+.size-price {
+    font-size: 11pt;
+}
+
+.ellipsis {
+    display:-webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}  
+
+.cursor-hover:hover {
+    cursor: pointer;
+}
+
+
+
+.back-color-light {
+    background-color: #F8F9FA;
+    border: none;
+}
+
+.back-color-dark {
+    background-color: #212529;
+    border: none;
+}
+
+
+.link-style {
+    color: #2009f7;
+    text-decoration:none;
+}
+
+.link-style:hover {
+    border-bottom: solid 1px #f31404;
+    padding-bottom: 0.5em;
+}
