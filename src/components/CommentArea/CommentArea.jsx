@@ -27,33 +27,29 @@ export default function CommentArea({ asin }) {
 
   const ENDPOINT_get = `https://striveschool-api.herokuapp.com/api/comments/${asin}`;
 
-  useEffect(
-    () => {
-      const getComments = async () => {
-        try {
-          const response = await fetch(ENDPOINT_get, {
-            headers: {
-              Authorization: key,
-            },
-          });
-          if (response.ok) {
-            const comments = await response.json();
-            setComments(comments);
-            setLoading(false);
-          } else {
-            console.log("error");
-          }
-        } catch (error) {
-          console.log(error);
+  useEffect(() => {
+    const getComments = async () => {
+      try {
+        const response = await fetch(ENDPOINT_get, {
+          headers: {
+            Authorization: key,
+          },
+        });
+        if (response.ok) {
+          const comments = await response.json();
+          setComments(comments);
+          setLoading(false);
+        } else {
+          console.log("error");
         }
-      };
-      if (asin) {
-        getComments();
+      } catch (error) {
+        console.log(error);
       }
-    },
-    [asin],
-    [comments]
-  );
+    };
+    if (asin) {
+      getComments();
+    }
+  }, [asin, ENDPOINT_get]);
 
   const ENDPOINT_post = "https://striveschool-api.herokuapp.com/api/comments";
 
@@ -106,7 +102,7 @@ export default function CommentArea({ asin }) {
 
   return (
     <>
-      <Container className="my-3 px-5">
+      <Container className="my-3 px-5" data-testid="comment-area">
         <Row className="g-3">
           {loading ? (
             <Col

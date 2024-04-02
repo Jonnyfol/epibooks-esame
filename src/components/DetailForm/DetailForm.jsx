@@ -39,7 +39,7 @@ export default function DetailForm({
           <span className="text-uppercase subtitle-style">{category}</span>
           <p className={`${themeText}`}>Una bellissima descrizione...</p>
           <span
-            className={`mb-3 fw-lighter text-uppercase ${themeText}`}
+            className={`mb-2 fw-lighter text-uppercase ${themeText}`}
           >{`${price} euro`}</span>
           {/* <div className="show-more-box">
             <button

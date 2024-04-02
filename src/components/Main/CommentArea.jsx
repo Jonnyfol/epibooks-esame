@@ -1,4 +1,3 @@
-import "./CommentArea.css";
 import CommentList from "./CommentList";
 import AddComment from "./AddComment";
 import { useState, useEffect } from "react";
@@ -22,7 +21,6 @@ export default function CommentArea({ selectedBook }) {
       }
     }
 
-    //controllo per evitare che la fetch venga eseguita senza dato asin:
     if (selectedBook) {
       getComment();
     }
@@ -30,7 +28,7 @@ export default function CommentArea({ selectedBook }) {
 
   return (
     <>
-      <CommentList comments={comments} /> {/* Passa i commenti a CommentList */}
+      <CommentList comments={comments} />
       <AddComment />
     </>
   );

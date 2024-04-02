@@ -3,21 +3,18 @@ import { useState, useEffect } from "react";
 
 export const ThemeContext = createContext(null);
 
-export default function ThemeContextProvider ( {children} ) {
+export default function ThemeContextProvider({ children }) {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
-    // uso il localStorage per memorizzare lo stato del tema, altrimenti
-    // nella pagina NotFound o in un eventuale refresh non viene mantenuto aggiornato:
-    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-    useEffect(() => {
-        localStorage.setItem("theme", theme);
-    }, [theme]);
+  const value = {
+    theme,
+    setTheme,
+  };
 
-    const value = {
-        theme,
-        setTheme
-    };
-
-    return (
-        <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>        
-    )
+  return (
+    <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+  );
 }
